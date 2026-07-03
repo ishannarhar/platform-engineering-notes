@@ -10,7 +10,8 @@
 
 -We can scale our pods manually, but K8s provides 3 types of autoscalers
 
--Horizontal pod autoscaler
+-Horizontal pod autoscaler which increases or decreases pods based on the demand
 
--Vertical pod autoscaler
--Cluster Autoscaler
+-Vertical pod autoscaler which increases memory and is NOT widely used neither is there by default
+
+-Cluster Autoscaler which increases or decreases cluster nodes to meet demand
