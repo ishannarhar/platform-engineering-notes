@@ -40,7 +40,10 @@ class SnowflakeGenerator{
     //@returns {bigint} A unique 64 bit Snowflake ID
 
     nextId(){
-      
+      let timestamp = this.getCurrentTimestamp();
+
+      //Clock moved backwards - wait until it catches up
+      if(timestamp )
     }
     
   }
