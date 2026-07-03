@@ -15,3 +15,30 @@ if(!serviceKey){
   console.log("Available Services: ")
   Object.keys(services).forEach((key)=> console.log(`  -${key}`))
 }
+
+//Find out the project name
+const projectName = service[serviceKey];
+
+//If no project name is found, we let the user know that the incorrect service name was entered
+if(!projectName){
+  console.error(`Unknown Service: ${serviceKey}`);
+  process.exit(1)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
