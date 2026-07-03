@@ -15,3 +15,7 @@
 -Vertical pod autoscaler which increases memory and is NOT widely used neither is there by default
 
 -Cluster Autoscaler which increases or decreases cluster nodes to meet demand
+
+-Most commonly used are the HPA and CA
+
+-If the cluster node does not have enough space to manage any more pods, it keeps the remaining pod in pending state while CA provisions extra nodes
