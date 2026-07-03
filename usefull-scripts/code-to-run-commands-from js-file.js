@@ -24,6 +24,52 @@ if(!projectName){
   console.error(`Unknown Service: ${serviceKey}`);
   process.exit(1)
 }
+//inform the user which service is being run
+console.log(`Running $${projectName} in $${env} environment`)
+
+try{
+  console.log("Clearing previous results")
+  execSync("npm run clear", {stdio:"inherit", shell:"powershell"})
+
+  console.log("Copying history...")
+  execSync("npm run history", {stdio:"inherit", shell:"powershell"})
+
+  //Wrapping the test execution code in its own try catch
+  let testsFailed = false;
+
+  try{
+    console.log(`Running tests for ${projectName}...`)
+    let cmd
+    if(serviceKey != "all"){
+      cmd = `npx playwright test --project="${projectName}"`
+    }else{
+      cmd = `npx playwright test`
+    }
+    //execute the created command i.e. cmd
+    execSync(cmd,{
+      stdio:"inherit",
+      env: {...process.env, TEST_ENV:env},
+      shell:"powershell"
+    })
+  } catch(err){
+    console.warn("Some tests failed, but continuing to generate report")
+    testsFailed = true
+  }
+
+  console.log("Generating Report...")
+  execSync("npm run report", {stdio:"inherit", shell:"powershell"})
+
+  if(testsFailed){
+    console.log("Test execution completed with failures")
+    process.exit(1)
+  }else{
+    console.log("All tests passed")
+  }
+}catch(error){
+  console.error(error)
+  process.exit(1)
+}
+
 
 
 
