@@ -19,3 +19,5 @@
 -Most commonly used are the HPA and CA
 
 -If the cluster node does not have enough space to manage any more pods, it keeps the remaining pod in pending state while CA provisions extra nodes
+
+-Rolling updates are better with Loosely couples APIs and backwards and forwards compatibility
